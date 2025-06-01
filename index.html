@@ -2,49 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Flower for Megs</title>
+  <title>For Megs 🌸</title>
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(#fff0f5, #ffe4e1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      flex-direction: column;
+    }
+
     .flower {
       position: relative;
       width: 200px;
       height: 200px;
-      margin: 50px auto;
+      animation: spin 20s linear infinite;
     }
+
     .petal {
-      width: 60px;
-      height: 60px;
-      background: #ff69b4; /* pink */
-      border-radius: 50%;
+      width: 80px;
+      height: 120px;
+      background: #ff69b4;
       position: absolute;
+      top: 40px;
+      left: 60px;
+      border-radius: 50% 50% 0 0;
+      transform-origin: bottom center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    /* Position 6 petals around the center */
-    .petal:nth-child(1) { top: 0; left: 70px; }
-    .petal:nth-child(2) { top: 30px; left: 130px; }
-    .petal:nth-child(3) { top: 90px; left: 130px; }
-    .petal:nth-child(4) { top: 120px; left: 70px; }
-    .petal:nth-child(5) { top: 90px; left: 10px; }
-    .petal:nth-child(6) { top: 30px; left: 10px; }
+
+    /* 8 symmetrical petals */
+    .petal:nth-child(1) { transform: rotate(0deg); }
+    .petal:nth-child(2) { transform: rotate(45deg); }
+    .petal:nth-child(3) { transform: rotate(90deg); }
+    .petal:nth-child(4) { transform: rotate(135deg); }
+    .petal:nth-child(5) { transform: rotate(180deg); }
+    .petal:nth-child(6) { transform: rotate(225deg); }
+    .petal:nth-child(7) { transform: rotate(270deg); }
+    .petal:nth-child(8) { transform: rotate(315deg); }
 
     .center {
-      width: 80px;
-      height: 80px;
-      background: #ffd700; /* gold */
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, gold, orange);
       border-radius: 50%;
       position: absolute;
-      top: 60px;
-      left: 60px;
+      top: 70px;
+      left: 70px;
+      box-shadow: 0 0 15px gold;
     }
-    body {
-      background: #f0f8ff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: sans-serif;
-    }
+
     p {
-      margin-top: 20px;
-      font-size: 1.2rem;
-      color: #333;
+      margin-top: 30px;
+      font-size: 1.4rem;
+      color: #d63384;
+      font-weight: bold;
+      text-shadow: 0 1px 1px #fff;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
     }
   </style>
 </head>
@@ -56,8 +78,10 @@
     <div class="petal"></div>
     <div class="petal"></div>
     <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
     <div class="center"></div>
   </div>
-  <p>For Megs 🌸</p>
+  <p>For Megs — You're blooming in my heart 🌷</p>
 </body>
 </html>
