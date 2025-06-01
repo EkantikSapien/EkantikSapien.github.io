@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flower for Megs</title>
+  <style>
+    .flower {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 50px auto;
+    }
+    .petal {
+      width: 60px;
+      height: 60px;
+      background: #ff69b4; /* pink */
+      border-radius: 50%;
+      position: absolute;
+    }
+    /* Position 6 petals around the center */
+    .petal:nth-child(1) { top: 0; left: 70px; }
+    .petal:nth-child(2) { top: 30px; left: 130px; }
+    .petal:nth-child(3) { top: 90px; left: 130px; }
+    .petal:nth-child(4) { top: 120px; left: 70px; }
+    .petal:nth-child(5) { top: 90px; left: 10px; }
+    .petal:nth-child(6) { top: 30px; left: 10px; }
+
+    .center {
+      width: 80px;
+      height: 80px;
+      background: #ffd700; /* gold */
+      border-radius: 50%;
+      position: absolute;
+      top: 60px;
+      left: 60px;
+    }
+    body {
+      background: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: sans-serif;
+    }
+    p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="flower">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="center"></div>
+  </div>
+  <p>For Megs 🌸</p>
+</body>
+</html>
