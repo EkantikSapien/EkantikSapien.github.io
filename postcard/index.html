@@ -6,26 +6,73 @@
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #fce3ec, #e0f7fa);
+      background: linear-gradient(135deg, #f8e8ee, #e8f1f8);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .flowers {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .flower {
+      position: absolute;
+      bottom: -60px;
+      font-size: 24px;
+      opacity: 0.8;
+      animation: floatUp linear infinite;
+    }
+
+    .flower:nth-child(1)  { left: 8%;  animation-duration: 11s; animation-delay: 0s; }
+    .flower:nth-child(2)  { left: 18%; animation-duration: 14s; animation-delay: 2s; }
+    .flower:nth-child(3)  { left: 28%; animation-duration: 10s; animation-delay: 4s; }
+    .flower:nth-child(4)  { left: 38%; animation-duration: 13s; animation-delay: 1s; }
+    .flower:nth-child(5)  { left: 48%; animation-duration: 12s; animation-delay: 3s; }
+    .flower:nth-child(6)  { left: 58%; animation-duration: 15s; animation-delay: 5s; }
+    .flower:nth-child(7)  { left: 68%; animation-duration: 10s; animation-delay: 2s; }
+    .flower:nth-child(8)  { left: 78%; animation-duration: 14s; animation-delay: 6s; }
+    .flower:nth-child(9)  { left: 88%; animation-duration: 12s; animation-delay: 1s; }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     .card {
-      background: white;
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.9);
       padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      max-width: 400px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      max-width: 460px;
+      width: calc(100% - 40px);
       text-align: center;
+      backdrop-filter: blur(4px);
     }
 
     h1 {
       margin-bottom: 10px;
-      color: #ff6b81;
+      color: #f7657a;
+      font-size: 3rem;
     }
 
     p {
@@ -35,50 +82,108 @@
     }
 
     .heart {
-      font-size: 30px;
+      font-size: 36px;
       margin: 20px 0;
+      animation: beat 1.2s infinite;
     }
 
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
+    .btn {
+      margin-top: 18px;
+      padding: 12px 24px;
       border: none;
-      border-radius: 20px;
-      background: #ff6b81;
+      border-radius: 999px;
+      background: #f7657a;
       color: white;
       cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      transform: scale(1.03);
+    }
+
+    .music-btn {
+      margin-top: 12px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #f7657a;
+      cursor: pointer;
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    #hiddenMessage {
+      display: none;
+      margin-top: 16px;
+      font-weight: 500;
     }
   </style>
 </head>
 <body>
 
+  <div class="flowers">
+    <span class="flower">🌸</span>
+    <span class="flower">🌷</span>
+    <span class="flower">🌸</span>
+    <span class="flower">🌼</span>
+    <span class="flower">🌷</span>
+    <span class="flower">🌸</span>
+    <span class="flower">🌼</span>
+    <span class="flower">🌷</span>
+    <span class="flower">🌸</span>
+  </div>
+
   <div class="card">
     <h1>Hey Love 💕</h1>
-    
+
     <p>
-      I know things feel heavy right now…  
-      and I wish I could take that weight away from you.
+      I know things feel heavy right now… and I wish I could
+      take that weight away from you.
     </p>
 
     <p>
-      But I want you to know this —  
-      you are deeply loved, always.  
-      Even on your hardest days.
+      But I want you to know this — you are deeply loved,
+      always. Even on your hardest days.
     </p>
 
     <div class="heart">❤️</div>
 
-    <p id="hiddenMessage" style="display:none;">
-      I'm here for you, no matter what.  
-      You're not alone in this. Ever.
+    <p id="hiddenMessage">
+      I'm here for you, no matter what. You're not alone in this. Ever.
     </p>
 
-    <button onclick="showMessage()">Click me</button>
+    <button class="btn" onclick="showMessage()">Click me</button>
+    <br>
+    <button class="music-btn" onclick="toggleMusic()">🎵 Play our song</button>
+
+    <audio id="bgMusic" loop>
+      <source src="song.mp3" type="audio/mpeg">
+    </audio>
   </div>
 
   <script>
     function showMessage() {
       document.getElementById("hiddenMessage").style.display = "block";
+    }
+
+    function toggleMusic() {
+      const music = document.getElementById("bgMusic");
+      const btn = document.querySelector(".music-btn");
+
+      if (music.paused) {
+        music.play();
+        btn.textContent = "⏸ Pause music";
+      } else {
+        music.pause();
+        btn.textContent = "🎵 Play our song";
+      }
     }
   </script>
 
