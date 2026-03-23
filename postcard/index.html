@@ -12,24 +12,40 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #f7e8ef, #e8f0f7);
-      overflow-x: hidden;
       min-height: 100vh;
+      overflow-x: hidden;
       position: relative;
+      background: #f7e8ef;
+    }
+
+    .bg-photo {
+      position: fixed;
+      inset: 0;
+      background: url("background.jpg") center center / cover no-repeat;
+      filter: blur(14px) brightness(0.7);
+      transform: scale(1.08);
+      z-index: 0;
+    }
+
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 245, 248, 0.35);
+      z-index: 1;
     }
 
     .bg-flowers {
       position: fixed;
       inset: 0;
       overflow: hidden;
-      z-index: 0;
+      z-index: 2;
       pointer-events: none;
     }
 
     .flower {
       position: absolute;
       top: -60px;
-      font-size: 28px;
+      font-size: 26px;
       animation: fall linear infinite;
       opacity: 0.9;
     }
@@ -51,7 +67,7 @@
         opacity: 0;
       }
       10% {
-        opacity: 0.9;
+        opacity: 0.85;
       }
       100% {
         transform: translateY(110vh) rotate(360deg);
@@ -61,58 +77,59 @@
 
     .wrap {
       position: relative;
-      z-index: 1;
+      z-index: 3;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 30px 16px;
+      padding: 28px 14px;
     }
 
     .card {
       width: 100%;
-      max-width: 620px;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 28px;
-      padding: 36px 24px;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+      max-width: 560px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
+      border-radius: 26px;
+      padding: 28px 20px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.16);
       text-align: center;
     }
 
     h1 {
-      margin-top: 0;
-      margin-bottom: 24px;
+      margin: 0 0 18px;
       color: #f25f7a;
-      font-size: 48px;
+      font-size: 42px;
       line-height: 1.1;
     }
 
     p {
       color: #555;
-      font-size: 18px;
-      line-height: 1.8;
-      margin: 0 0 24px;
+      font-size: 17px;
+      line-height: 1.75;
+      margin: 0 0 18px;
     }
 
     .heart {
-      font-size: 40px;
-      margin: 22px 0;
+      font-size: 34px;
+      margin: 16px 0 18px;
       animation: pulse 1.4s infinite;
     }
 
     @keyframes pulse {
       0%   { transform: scale(1); }
-      50%  { transform: scale(1.15); }
+      50%  { transform: scale(1.12); }
       100% { transform: scale(1); }
     }
 
-    .btn, .music-btn {
+    .btn,
+    .music-btn {
       border: none;
       border-radius: 999px;
-      padding: 14px 26px;
-      font-size: 16px;
+      padding: 12px 22px;
+      font-size: 15px;
       cursor: pointer;
-      margin: 8px;
+      margin: 6px;
     }
 
     .btn {
@@ -130,26 +147,37 @@
       display: none;
       margin-top: 14px;
       color: #666;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1.7;
     }
 
     @media (max-width: 700px) {
       .card {
-        padding: 28px 18px;
+        max-width: 92%;
+        padding: 24px 16px;
       }
 
       h1 {
-        font-size: 36px;
+        font-size: 34px;
       }
 
-      p, #extraMessage {
-        font-size: 18px;
+      p,
+      #extraMessage {
+        font-size: 16px;
+      }
+
+      .btn,
+      .music-btn {
+        width: 100%;
+        max-width: 240px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="bg-photo"></div>
+  <div class="bg-overlay"></div>
+
   <div class="bg-flowers">
     <div class="flower">🌸</div>
     <div class="flower">🌷</div>
@@ -168,21 +196,21 @@
       <h1>Hey Wifey 💕</h1>
 
       <p>
-        The weight i know is a bit unbearable right now and if I could, I’d wrap you up in the biggest hug and not let go, but I am a few thousand kilometers away so i wanted to send you a little reminder.
+        The weight I know is a bit unbearable right now and if I could, I’d wrap you up in the biggest hug and not let go, but I am a few thousand kilometers away so I wanted to send you a little reminder.
       </p>
 
       <p>
-        I want you to know that what you are feeling is completely okay and its completely okay to be overwhelmed by this situation hunny. Its okay to feel a bit heartbroken and lost in the chaos, its okay not to be strong all the time. My heart quench everytime those tears drop but its also okay to cry and let it all out.
+        I want you to know that what you are feeling is completely okay and it’s completely okay to be overwhelmed by this situation, hunny. It’s okay to feel a bit heartbroken and lost in the chaos, it’s okay not to be strong all the time. My heart aches every time those tears drop, but it’s also okay to cry and let it all out.
       </p>
 
       <p>
-        I admire that about you sweetie, the way you care, the way you try and the way you try to fulfill everyones dream and take of everyones wants and wishes putting them ahead of yours. I love that about you sweetie. You are stronger then you think, you don't have to carry everything by yourself. You are never ever alone in any of this, remember sweetie, I am always right here with you.
+        I admire that about you, sweetie — the way you care, the way you try, and the way you try to fulfill everyone’s dreams and take care of everyone’s wants and wishes, putting them ahead of yours. I love that about you, sweetie. You are stronger than you think, and you don’t have to carry everything by yourself. You are never ever alone in any of this. Remember, sweetie, I am always right here with you.
       </p>
 
       <div class="heart">❤️</div>
 
       <p>
-        We’re building something so special together- our life, our little world made of all the small moments, the laughs, even when you scold me, the discussions, the dreams we share.
+        We’re building something so special together — our life, our little world made of all the small moments, the laughs, even when you scold me, the discussions, and the dreams we share.
       </p>
 
       <p>
