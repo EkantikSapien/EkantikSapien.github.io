@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>For Wifey 💕</title>
-
   <style>
     * {
       box-sizing: border-box;
@@ -15,91 +14,138 @@
       font-family: Arial, sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
+      background: #f7e8ef;
     }
 
-    /* Blurred background image */
     .bg {
       position: fixed;
       inset: 0;
       background: url("us.JPG") center/cover no-repeat;
-      filter: blur(7px) brightness(0.7);
-      transform: scale(1.1);
+      filter: blur(14px) brightness(0.65);
+      transform: scale(1.08);
       z-index: 0;
     }
 
-    /* Soft overlay */
     .overlay {
       position: fixed;
       inset: 0;
-      background: rgba(255, 240, 245, 0.3);
+      background: rgba(255, 245, 248, 0.22);
       z-index: 1;
     }
 
-    /* Floating flowers */
     .flowers {
       position: fixed;
       inset: 0;
       z-index: 2;
       pointer-events: none;
+      overflow: hidden;
     }
 
     .flower {
       position: absolute;
       top: -60px;
-      font-size: 26px;
+      font-size: 24px;
       animation: fall linear infinite;
+      opacity: 0.9;
     }
 
-    .flower:nth-child(1){left:10%; animation-duration:10s;}
-    .flower:nth-child(2){left:25%; animation-duration:12s;}
-    .flower:nth-child(3){left:40%; animation-duration:9s;}
-    .flower:nth-child(4){left:55%; animation-duration:11s;}
-    .flower:nth-child(5){left:70%; animation-duration:13s;}
-    .flower:nth-child(6){left:85%; animation-duration:10s;}
+    .flower:nth-child(1) { left: 8%;  animation-duration: 10s; animation-delay: 0s; }
+    .flower:nth-child(2) { left: 22%; animation-duration: 12s; animation-delay: 2s; }
+    .flower:nth-child(3) { left: 36%; animation-duration: 9s;  animation-delay: 1s; }
+    .flower:nth-child(4) { left: 50%; animation-duration: 11s; animation-delay: 3s; }
+    .flower:nth-child(5) { left: 66%; animation-duration: 13s; animation-delay: 0s; }
+    .flower:nth-child(6) { left: 80%; animation-duration: 10s; animation-delay: 4s; }
+    .flower:nth-child(7) { left: 92%; animation-duration: 12s; animation-delay: 2s; }
 
     @keyframes fall {
-      0% { transform: translateY(-60px); opacity:0; }
-      10% { opacity:1; }
-      100% { transform: translateY(110vh); opacity:0.2; }
+      0% {
+        transform: translateY(-70px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.15;
+      }
     }
 
-    /* Main layout */
     .wrap {
       position: relative;
       z-index: 3;
+      min-height: 100vh;
       display: flex;
+      align-items: center;
       justify-content: center;
-      padding: 30px 16px;
+      padding: 24px 16px;
     }
 
     .card {
-      max-width: 580px;
       width: 100%;
-      background: rgba(255,255,255,0.9);
+      max-width: 580px;
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(8px);
       border-radius: 24px;
-      padding: 26px 20px;
+      padding: 24px 18px 28px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      animation: fadeIn 1.5s ease;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.16);
+    }
+
+    .photo {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 22px;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+
+    .photo:hover {
+      transform: scale(1.02);
+    }
+
+    .tap-text {
+      margin-top: 14px;
+      color: #ffffff;
+      background: rgba(242, 95, 122, 0.9);
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 15px;
+    }
+
+    .content {
+      display: none;
+      margin-top: 22px;
+      animation: fadeIn 1.2s ease;
     }
 
     @keyframes fadeIn {
-      from { opacity:0; transform: translateY(20px); }
-      to { opacity:1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
       color: #f25f7a;
       font-size: 38px;
-      margin-bottom: 16px;
+      margin: 0 0 16px;
+      line-height: 1.1;
     }
 
     p {
       color: #555;
       font-size: 17px;
-      line-height: 1.7;
-      margin-bottom: 18px;
+      line-height: 1.75;
+      margin: 0 0 16px;
     }
 
     .heart {
@@ -121,18 +167,37 @@
       background: white;
       color: #f25f7a;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      font-size: 15px;
     }
 
     @media (max-width: 600px) {
-      h1 { font-size: 30px; }
-      p { font-size: 15px; }
+      .card {
+        max-width: 100%;
+        padding: 18px 14px 22px;
+      }
+
+      .photo {
+        max-width: 260px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+
+      .tap-text,
+      .music-btn {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
-
 <body>
-
   <div class="bg"></div>
   <div class="overlay"></div>
 
@@ -143,40 +208,47 @@
     <div class="flower">🌸</div>
     <div class="flower">🌷</div>
     <div class="flower">🌼</div>
+    <div class="flower">🌸</div>
   </div>
 
   <div class="wrap">
     <div class="card">
-      <h1>Hey Wifey 💕</h1>
+      <img src="us.JPG" alt="Us" class="photo" onclick="revealLetter()" />
 
-      <p>
-        The weight I know is a bit unbearable right now and if I could, I’d wrap you up in the biggest hug and not let go, but I am a few thousand kilometers away so I wanted to send you a little reminder.
-      </p>
+      <div class="tap-text" id="tapText">Tap the photo 💕</div>
 
-      <p>
-        I want you to know that what you are feeling is completely okay and it’s completely okay to be overwhelmed by this situation hunny. It’s okay to feel a bit heartbroken and lost in the chaos, it’s okay not to be strong all the time. My heart aches every time those tears drop but it’s also okay to cry and let it all out.
-      </p>
+      <div class="content" id="letterContent">
+        <h1>Hey Wifey 💕</h1>
 
-      <p>
-        I admire that about you sweetie, the way you care, the way you try and the way you try to fulfill everyone’s dream and take care of everyone’s wants and wishes putting them ahead of yours. I love that about you sweetie. You are stronger than you think, you don't have to carry everything by yourself. You are never ever alone in any of this, remember sweetie, I am always right here with you.
-      </p>
+        <p>
+          The weight I know is a bit unbearable right now and if I could, I’d wrap you up in the biggest hug and not let go, but I am a few thousand kilometers away so I wanted to send you a little reminder.
+        </p>
 
-      <div class="heart">❤️</div>
+        <p>
+          I want you to know that what you are feeling is completely okay and it’s completely okay to be overwhelmed by this situation hunny. It’s okay to feel a bit heartbroken and lost in the chaos, it’s okay not to be strong all the time. My heart aches every time those tears drop but it’s also okay to cry and let it all out.
+        </p>
 
-      <p>
-        We’re building something so special together, our life, our little world made of all the small moments, the laughs, even when you scold me, the discussions, the dreams we share.
-      </p>
+        <p>
+          I admire that about you sweetie, the way you care, the way you try and the way you try to fulfill everyone’s dream and take care of everyone’s wants and wishes putting them ahead of yours. I love that about you sweetie. You are stronger than you think, you don't have to carry everything by yourself. You are never ever alone in any of this, remember sweetie, I am always right here with you.
+        </p>
 
-      <p>
-        Because real love isn’t just the big moments, it’s in choosing each other every single day. And I choose you, always. You are my reason to love, and I love loving you.
-      </p>
+        <div class="heart">❤️</div>
 
-      <p>
-        I’m always here for you, even if you just want me to listen.<br><br>
-        I love you so much wifey
-      </p>
+        <p>
+          We’re building something so special together — our life, our little world made of all the small moments, the laughs, even when you scold me, the discussions, the dreams we share.
+        </p>
 
-      <button class="music-btn" onclick="toggleMusic()">🎵 Play music</button>
+        <p>
+          Because real love isn’t just the big moments, it’s in choosing each other every single day. And I choose you, always. You are my reason to love, and I love loving you.
+        </p>
+
+        <p>
+          I’m always here for you, even if you just want me to listen.<br><br>
+          I love you so much wifey
+        </p>
+
+        <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵 Play music</button>
+      </div>
 
       <audio id="bgMusic" loop>
         <source src="song.mp3" type="audio/mpeg">
@@ -185,9 +257,14 @@
   </div>
 
   <script>
+    function revealLetter() {
+      document.getElementById("letterContent").style.display = "block";
+      document.getElementById("tapText").style.display = "none";
+    }
+
     function toggleMusic() {
       var music = document.getElementById("bgMusic");
-      var btn = document.querySelector(".music-btn");
+      var btn = document.getElementById("musicBtn");
 
       if (music.paused) {
         music.play();
@@ -198,6 +275,5 @@
       }
     }
   </script>
-
 </body>
 </html>
